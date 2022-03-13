@@ -1,0 +1,29 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+#overlay {
+    $root: &;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    transition: opacity 500ms, backdrop-filter 500ms;
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+
+        @include breakpoint('lg') {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}

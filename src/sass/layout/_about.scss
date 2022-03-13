@@ -1,0 +1,83 @@
+@use '../utilities/' as *;
+
+.about {
+    $root: &;
+
+    @include breakpoint('md') {
+        height: 33vh;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        @include breakpoint('md') {
+            grid-template-columns: 30% 33.5% calc(50% - 160px);
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        @include breakpoint('lg') {
+            grid-template-columns: 30% 33.5% calc(40% - 160px);
+        }
+    }
+
+    &__decorative {
+        position: relative;
+        height: 275px;
+
+        @include breakpoint('md') {
+            height: unset;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        &--1 {
+            @extend #{$root}__bg;
+            
+            background-image: url('../img/image-about-dark.jpg');
+        }
+
+        &--2 {
+            @extend #{$root}__bg;
+
+            background-image: url('../img/image-about-light.jpg');
+        }
+    }
+
+    &__info {
+        padding: 72px 32px 64px 32px;
+
+        @include breakpoint('md') {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            padding: 72px 0 64px 0;
+        }
+
+        @include breakpoint('lg') {
+            padding: 48px 0;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 12px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+
+    &__text {
+        color: $c-gray-dark;
+        line-height: 1.66rem;
+    }
+}

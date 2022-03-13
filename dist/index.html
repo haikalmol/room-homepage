@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Frontend Mentor | Room homepage</title>
+</head>
+<body>
+  <!-- Menu background overlay -->
+  <div id="overlay" data-overlay></div>
+
+  <!-- Key visual -->
+  <div class="kv" data-kv>
+    <div class="kv__container">
+      <div class="kv__hero">
+        <!-- Header -->
+        <header class="header" data-header>
+          <div class="header__container">
+            <a href="#" class="header__logo-link">
+              <img src="img/logo.svg" alt="Room - Homepage" class="header__logo-img">
+            </a>
+            <nav class="header__nav" data-nav>
+              <button class="header__hamburger" aria-label="menu" aria-expanded="false" aria-controls="nav-list" data-hamburger>
+                <span class="header__hamburger-bars"></span>
+              </button>
+              <ul id="nav-list" class="header__nav-list">
+                <li class="header__nav-item"><a href="#" class="header__nav-link">Home</a></li>
+                <li class="header__nav-item"><a href="#" class="header__nav-link">Shop</a></li>
+                <li class="header__nav-item"><a href="#" class="header__nav-link">About</a></li>
+                <li class="header__nav-item"><a href="#" class="header__nav-link">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <div class="kv__hero-bg--1" data-bg="1"></div>
+        <div class="kv__hero-bg--2" data-bg="2"></div>
+        <div class="kv__hero-bg--3" data-bg="3"></div>
+        <div class="kv__hero-controls">
+          <button class="kv__hero-controls-btn" aria-label="Slide hero content to left" data-btn="prev"><i class="i-angle-left"></i></button>
+          <button class="kv__hero-controls-btn" aria-label="Slide hero content to right" data-btn="next"><i class="i-angle-right"></i></button>
+        </div>
+      </div>
+      <div class="kv__intro" role="region" aria-live="polite" data-intro>
+        <h1 class="kv__intro-heading" data-intro-heading>Discover innovative ways to decorate</h1>
+        <p class="kv__intro-text" data-intro-text>We provide unmatched quality, comfort, and style for property owners across the country. 
+          Our experts combine form and function in bringing your vision to life. Create a room in your 
+          own style with our collection and make your property a reflection of you and what you love.</p>
+        <a href="#" class="kv__intro-link">Shop now<i class="kv__intro-link-icon i-arrow"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="about">
+    <div class="about__container">
+      <div class="about__decorative">
+        <div class="about__bg--1"></div>
+      </div>
+      <section class="about__info">
+        <h2 class="about__heading">About our furniture</h2>
+        <p class="about__text">Our multifunctional collection blends design and function to suit your individual taste.
+          Make each room unique, or pick a cohesive theme that best express your interests and what
+          inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+          or anything in between. Product specialists are available to help you create your dream space.
+        </p>
+      </section>
+      <div class="about__decorative">
+        <div class="about__bg--2"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>

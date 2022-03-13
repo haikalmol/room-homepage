@@ -1,0 +1,265 @@
+@use '../utilities' as *;
+
+.kv {
+    $root: &;
+
+    @include breakpoint('md') {
+        height: 67vh;
+        min-height: 440px;
+    }
+
+    &__container {
+        display: flex;
+        flex-flow: column;
+
+        @include breakpoint('md') {
+            flex-flow: row;
+            height: 100%;
+        }
+    }
+
+    &__hero {
+        position: relative;
+        height: 360px;
+        
+        @include breakpoint('md') {
+            width: 50%;
+            height: 100%;
+        }
+
+        @include breakpoint('lg') {
+            width: 60%;
+        }
+    }
+
+    &__hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        &--1 {
+            @extend #{$root}__hero-bg;
+            background-image: url('../img/mobile-image-hero-1.jpg');
+            clip-path: polygon(0px 0, 100% 0, 100% 100%, 0px 100%);
+
+            &.slide-right {
+                animation: bgIn 1000ms ease-in-out forwards;
+            }
+
+            &.slide-left {
+                animation: bgOut 1000ms ease-in-out forwards;
+            }
+
+            @include breakpoint('md') {
+                background-image: url('../img/desktop-image-hero-1.jpg');
+            }
+        }
+
+        &--2 {
+            @extend #{$root}__hero-bg;
+            background-image: url('../img/mobile-image-hero-2.jpg');
+            clip-path: polygon(0px 0, 0 0, 0 100%, 0px 100%);
+
+            &.slide-right {
+                animation: bgIn 1000ms ease-in-out forwards;
+            }
+
+            &.slide-left {
+                animation: bgOut 1000ms ease-in-out forwards;
+            }
+
+            @include breakpoint('md') {
+                background-image: url('../img/desktop-image-hero-2.jpg');
+            }
+        }
+
+        &--3 {
+            @extend #{$root}__hero-bg;
+            background-image: url('../img/mobile-image-hero-3.jpg');
+            clip-path: polygon(0px 0, 0 0, 0 100%, 0px 100%);
+
+            &.slide-right {
+                animation: bgIn 1000ms ease-in-out forwards;
+            }
+
+            &.slide-left {
+                animation: bgOut 1000ms ease-in-out forwards;
+            }
+
+            @include breakpoint('md') {
+                background-image: url('../img/desktop-image-hero-3.jpg');
+            }
+        }
+    }
+
+    &__hero-controls {
+        position: absolute;
+        display: flex;
+        bottom: 0;
+        right: 0;
+        z-index: 4;
+
+        @include breakpoint('md') {
+            right: unset;
+            left: 100%;
+        }
+
+        i {
+            pointer-events: none;
+        }
+    }
+
+    &__hero-controls-btn {
+        width: 56px;
+        height: 56px;
+        background: $c-black;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        padding: 0;
+        cursor: pointer;
+
+        @include breakpoint('md') {
+            transition: background 250ms ease-in;
+            width: 80px;
+            height: 80px;
+
+            &:hover {
+                background: lighten($c-black, 15);
+            }
+        }
+
+        @include breakpoint('lg') {
+            font-size: 3.5rem;
+        }
+
+        &:focus {
+            outline: 2px dashed $c-red;
+            z-index: 1;
+        }
+
+        // Browsers that don’t support :focus-visible use the focus styles defined in the :focus rule and ignore the second style rule completely (because :focus-visible is unknown to them).
+        // Browsers should now only indicate focus when it is helpful to the user - such as in cases where the user interacts with the page via a keyboard.
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+    }
+
+    &__intro {
+        padding: 72px 32px 64px 32px;
+        overflow-x: hidden;
+
+        @include breakpoint('md') {
+            display: flex;
+            width: 50%;
+            flex-flow: column;
+            justify-content: center;
+            padding: 0 5.25vw 32px 7vw;
+        }
+
+        @include breakpoint('lg') {
+            width: 40%;
+        }
+
+        &.slide {
+            #{$root}__intro-heading {
+                animation: slideTop 1000ms ease-in-out;
+
+                @include breakpoint('md') {
+                    animation: slideTopDesktop 1000ms ease-in-out;
+                }
+            }
+
+            #{$root}__intro-text {
+                animation: slideRight 1000ms ease-in-out;
+
+                @include breakpoint('md') {
+                    animation: slideRightDesktop 1000ms ease-in-out;
+                }
+            }
+
+            #{$root}__intro-link {
+                animation: slideRight 1000ms ease-in-out;
+
+                @include breakpoint('md') {
+                    animation: slideRightDesktop 1000ms ease-in-out;
+                }
+            }
+        }
+    }
+
+    &__intro-heading {
+        font-size: 2.33rem;
+        font-weight: 600;
+        letter-spacing: -1px;
+        line-height: 1.1;
+        margin-bottom: 16px;
+
+        @include breakpoint('md') {
+            letter-spacing: -2px;
+        }
+
+        @include breakpoint('lg') {
+            margin-bottom: 25px;
+        }
+
+        @media (min-width: 1386px) {
+            font-size: 3.33rem;
+        }
+    }
+
+    &__intro-text {
+        color: $c-gray-dark;
+        line-height: 1.66rem;
+        font-size: 1rem;
+        margin-bottom: 40px;
+
+        @include breakpoint('lg') {
+            max-width: 470px;
+        }
+    }
+
+    &__intro-link {
+        align-self: flex-start;
+        font-weight: 500;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        color: $c-black;
+
+        @include breakpoint('md') {
+            transition: color 250ms ease-in;
+            
+            &:hover {
+                color: lighten($c-black, 60);
+
+                #{$root}__intro-link-icon {
+                    transform: translateX(30px);
+                }
+            }
+        }
+
+        &:focus {
+            outline: 2px dashed $c-red;
+            outline-offset: 4px;
+            color: lighten($c-black, 60);
+        }
+
+        // Browsers that don’t support :focus-visible use the focus styles defined in the :focus rule and ignore the second style rule completely (because :focus-visible is unknown to them).
+        // Browsers should now only indicate focus when it is helpful to the user - such as in cases where the user interacts with the page via a keyboard.
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+    }
+
+    &__intro-link-icon {
+        display: inline-block;
+        margin-left: 24px;
+        transition: transform 700ms cubic-bezier(0.68, -1.8, 0.32, 1.6);
+    }
+}
